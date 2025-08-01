@@ -3,25 +3,25 @@
 -   [x] **1. Khởi tạo dự án và cài đặt dependencies**
     -   [x] Khởi tạo dự án Vue.js 3 bằng Vite. (Đã có sẵn)
     -   [x] Cài đặt Bootstrap.
--   [ ] **2. Tạo cấu trúc file và component**
-    -   [ ] Tạo thư mục `src/assets/images`.
-    -   [ ] Thêm ảnh `qr-payment-code.jpg` và logo vào `src/assets/images`.
-    -   [ ] Tạo file `src/components/ActionToolbar.vue`.
-    -   [ ] Tạo file `src/components/AgendaSheet.vue`.
-    -   [ ] Tạo file `src/components/AgendaHeader.vue`.
-    -   [ ] Tạo file `src/components/AgendaTimeline.vue`.
-    -   [ ] Tạo file `src/components/AgendaFooter.vue`.
--   [ ] **3. Xây dựng giao diện tĩnh**
-    -   [ ] Implement `ActionToolbar.vue`.
-    -   [ ] Implement `AgendaHeader.vue`.
-    -   [ ] Implement `AgendaTimeline.vue`.
-    -   [ ] Implement `AgendaFooter.vue`.
-    -   [ ] Implement `AgendaSheet.vue` để chứa các component trên.
-    -   [ ] Cập nhật `App.vue` để hiển thị `AgendaSheet.vue` và `ActionToolbar.vue`.
--   [ ] **4. Styling**
-    -   [ ] Import Bootstrap vào `main.js`.
-    -   [ ] Tạo file `src/assets/main.css` và viết CSS cho layout A4.
-    -   [ ] Thêm class `.page-break` để mô phỏng ngắt trang.
--   [ ] **5. Hoàn thành**
-    -   [ ] Kiểm tra lại toàn bộ giao diện theo UI_SPEC.
-    -   [ ] Cập nhật checklist này.
+-   [x] **2. Tạo cấu trúc file và component**
+    -   [x] Tạo thư mục `src/assets/images`.
+    -   [x] Thêm ảnh `qr-payment-code.jpg` và logo vào `src/assets/images`.
+    -   [x] Tạo file `src/components/ActionToolbar.vue`.
+    -   [x] Tạo file `src/components/AgendaSheet.vue`.
+    -   [x] Tạo file `src/components/AgendaHeader.vue`.
+    -   [x] Tạo file `src/components/AgendaTimeline.vue`.
+    -   [x] Tạo file `src/components/AgendaFooter.vue`.
+-   [x] **3. Xây dựng giao diện tĩnh**
+    -   [x] Implement `ActionToolbar.vue`.
+    -   [x] Implement `AgendaHeader.vue`.
+    -   [x] Implement `AgendaTimeline.vue`.
+    -   [x] Implement `AgendaFooter.vue`.
+    -   [x] Implement `AgendaSheet.vue` để chứa các component trên.
+    -   [x] Cập nhật `App.vue` để hiển thị `AgendaSheet.vue` và `ActionToolbar.vue`.
+-   [x] **4. Styling**
+    -   [x] Import Bootstrap vào `main.js`.
+    -   [x] Tạo file `src/assets/main.css` và viết CSS cho layout A4.
+    -   [x] Thêm class `.page-break` để mô phỏng ngắt trang.
+-   [x] **5. Hoàn thành**
+    -   [x] Kiểm tra lại toàn bộ giao diện theo UI_SPEC.
+    -   [x] Cập nhật checklist này.

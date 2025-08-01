@@ -1,0 +1,39 @@
+body {
+	background-color: #e9ecef;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.a4-sheet {
+	width: 210mm;
+	min-height: 297mm;
+	padding: 20mm;
+	margin: 1cm auto;
+	border: 1px #d3d3d3 solid;
+	background: white;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.page-break {
+	border-top: 1px dashed #ccc;
+	margin-top: 20mm;
+}
+
+/* Tinh chỉnh input để trông giống text hơn */
+.form-control {
+	border: none;
+	background-color: transparent;
+	width: 100%;
+	padding: 0.25rem;
+	border-radius: 0;
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border-color: inherit;
+	background-color: #f0f0f0; /* Thêm một chút nền khi focus */
+}
+
+.input-group .form-control {
+	border-radius: 0;
+}
