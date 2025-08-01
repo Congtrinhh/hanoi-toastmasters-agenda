@@ -25,29 +25,28 @@ import { usePersistence } from "../composables/usePersistence.js";
 
 const getInitialState = () => ({
 	headerData: {
-		meetingNumber: { value: "182", isBold: false },
+		meetingNumber: { value: "182" },
 		generalInfo: {
-			value: `Ngày: Thứ 5, 7/8/2025			 Giờ: 19:00 - 21:30
+			value: `Ngày: Thứ 5, 7/8/2025 Giờ: 19:00 - 21:30
 Địa chỉ: 22 Thành Công`,
-			isBold: false,
 		},
-		wordOfTheDay: { value: "", isBold: false },
+		wordOfTheDay: { value: "" },
 	},
 	timelineRows: [
 		{
 			id: Date.now(),
 			startTime: "19:00",
-			program: { value: "Trò chơi khởi động", isBold: false },
-			duration: { value: 10, isBold: false },
-			assignee: { value: "TM. ", isBold: false },
+			program: { value: "Trò chơi khởi động" },
+			duration: { value: 10 },
+			assignee: { value: "TM. " },
 			isHeading: false,
 		},
 		{
 			id: Date.now() + 1,
 			startTime: "",
-			program: { value: "Phát biểu mở đầu của chủ tịch CLB", isBold: false },
-			duration: { value: 3, isBold: false },
-			assignee: { value: "TM. Thúy Kimi", isBold: false },
+			program: { value: "Phát biểu mở đầu của chủ tịch CLB" },
+			duration: { value: 3 },
+			assignee: { value: "TM. Thúy Kimi" },
 			isHeading: false,
 		},
 	],
@@ -71,9 +70,9 @@ function addRow(index) {
 	const newRow = {
 		id: Date.now(),
 		startTime: "",
-		program: { value: "", isBold: false },
-		duration: { value: 5, isBold: false },
-		assignee: { value: "", isBold: false },
+		program: { value: "" },
+		duration: { value: 5 },
+		assignee: { value: "" },
 		isHeading: false,
 	};
 	appState.value.timelineRows.splice(index + 1, 0, newRow);

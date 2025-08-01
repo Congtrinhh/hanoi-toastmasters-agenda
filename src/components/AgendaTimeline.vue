@@ -39,8 +39,7 @@
 						<div class="cell">
 							<AutoResizingTextarea
 								v-model="row.program.value"
-								:class="{ 'fw-bold': row.program.isBold }"
-								@focus="emit('fieldFocus', row.program)"
+								@focus="emit('fieldFocus', { field: row.program, isHeading: row.isHeading })"
 							/>
 						</div>
 						<div class="cell">
@@ -50,8 +49,7 @@
 									class="form-control"
 									style="width: 40px; flex-grow: 0"
 									v-model.number="row.duration.value"
-									:class="{ 'fw-bold': row.duration.isBold }"
-									@focus="emit('fieldFocus', row.duration)"
+									@focus="emit('fieldFocus', { field: row.duration, isHeading: row.isHeading })"
 								/>
 								<span class="">phút</span>
 							</div>
@@ -59,25 +57,23 @@
 						<div class="cell">
 							<AutoResizingTextarea
 								v-model="row.assignee.value"
-								:class="{ 'fw-bold': row.assignee.isBold }"
-								@focus="emit('fieldFocus', row.assignee)"
+								@focus="emit('fieldFocus', { field: row.assignee, isHeading: row.isHeading })"
 							/>
 						</div>
 					</div>
 
 					<!-- Action Buttons -->
 					<div class="action-buttons no-print" v-if="hoveredRow === row.id">
-						<button class="btn btn-sm btn-light" @click="emit('addRow', index)">+ Thêm</button>
-						<button class="btn btn-sm btn-light mx-1" @click="emit('copyRow', index)">❐ Sao chép</button>
+						<button class="btn btn-sm btn-light" @click="emit('addRow', index)">+</button>
+						<button class="btn btn-sm btn-light mx-1" @click="emit('copyRow', index)">❐</button>
 
 						<button
 							class="btn btn-sm btn-light mx-1"
 							title="Toggle Heading"
 							@click="emit('toggleHeading', index)"
 						>
-							Làm tiêu đề
-						</button>
-						<button class="btn btn-sm btn-light" v-if="rows.length > 1" @click="emit('deleteRow', index)">
+							Tiêu đề</button
+						><button class="btn btn-sm btn-light" v-if="rows.length > 1" @click="emit('deleteRow', index)">
 							Xóa
 						</button>
 					</div>
@@ -122,7 +118,6 @@ const draggableRows = computed({
 .timeline-grid-container {
 	position: relative;
 	border: 1px solid #dee2e6;
-	font-size: 0.9rem;
 }
 
 .timeline-header,
@@ -197,8 +192,8 @@ const draggableRows = computed({
 }
 
 .is-heading .cell,
-.is-heading :deep(textarea),
-.is-heading :deep(input) {
+.is-heading :deep(.editable-div),
+.is-heading input {
 	font-weight: bold;
 }
 </style>

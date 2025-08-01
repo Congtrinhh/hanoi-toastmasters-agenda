@@ -1,9 +1,16 @@
 <template>
-	<textarea ref="textarea" :value="modelValue" @input="onInput" class="form-control auto-resize-textarea"></textarea>
+	<div
+		ref="editableDiv"
+		contenteditable="true"
+		class="form-control editable-div"
+		@input="onInput"
+		@blur="onInput"
+		v-html="modelValue"
+	></div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
 	modelValue: String,
@@ -11,44 +18,36 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 
-const textarea = ref(null);
-
-const resizeTextarea = () => {
-	if (textarea.value) {
-		textarea.value.style.height = "auto";
-		textarea.value.style.height = `${textarea.value.scrollHeight}px`;
-	}
-};
+const editableDiv = ref(null);
 
 const onInput = (event) => {
-	emit("update:modelValue", event.target.value);
+	emit("update:modelValue", event.target.innerHTML);
 };
 
-onMounted(() => {
-	resizeTextarea();
-});
-
+// Watch for external changes to modelValue and update the div's content
+// This is necessary if the value is changed programmatically from the parent
 watch(
 	() => props.modelValue,
-	() => {
-		// Use nextTick to ensure the DOM has updated before resizing
-		import("vue").then(({ nextTick }) => {
-			nextTick(resizeTextarea);
-		});
+	(newValue) => {
+		if (editableDiv.value && editableDiv.value.innerHTML !== newValue) {
+			editableDiv.value.innerHTML = newValue;
+		}
 	}
 );
 </script>
 
 <style scoped>
-.auto-resize-textarea {
+.editable-div {
 	width: 100%;
 	resize: none;
-	overflow: hidden;
+	overflow: hidden; /* Keeps it clean */
 	padding: 0;
 	border: none;
 	background-color: transparent;
+	min-height: 24px; /* Ensure it has some height even when empty */
 }
-.auto-resize-textarea:focus {
+.editable-div:focus {
+	outline: none;
 	box-shadow: none;
 	background-color: #f0f0f0;
 }
