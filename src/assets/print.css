@@ -7,7 +7,6 @@
 	html,
 	body {
 		width: 210mm;
-		height: 297mm;
 		margin: 0 !important;
 		padding: 0 !important;
 		-webkit-print-color-adjust: exact;
@@ -24,16 +23,15 @@
 	}
 
 	.a4-sheet {
-		position: absolute;
-		left: 0;
-		top: 0;
+		/* Xóa bỏ position và height cố định để cho phép ngắt trang */
 		margin: 0;
 		border: none !important;
 		box-shadow: none !important;
 		width: 210mm;
-		height: 297mm;
-		padding: 12mm; /* Use mm for consistency */
+		min-height: 297mm; /* Dùng min-height để giữ layout trang đầu */
+		padding: 12mm;
 		box-sizing: border-box;
+		background: white !important; /* Thêm nền trắng */
 	}
 
 	.no-print,
@@ -41,7 +39,7 @@
 		display: none !important;
 	}
 
-	/* Ensure logos are visible */
+	/* Đảm bảo logo hiển thị */
 	.agenda-header img {
 		visibility: visible !important;
 	}
@@ -51,5 +49,21 @@
 		border: none !important;
 		box-shadow: none !important;
 		background-color: transparent !important;
+	}
+
+	/* Điều khiển ngắt trang */
+	.agenda-timeline tr,
+	.agenda-header,
+	.agenda-footer {
+		page-break-inside: avoid;
+	}
+
+	/* Thêm khoảng nghỉ sau header và trước footer khi in nhiều trang */
+	.agenda-header {
+		page-break-after: avoid;
+	}
+
+	.agenda-footer {
+		page-break-before: auto;
 	}
 }
