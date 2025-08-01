@@ -1,0 +1,54 @@
+@page {
+	size: A4;
+	margin: 0;
+}
+
+@media print {
+	html,
+	body {
+		width: 210mm;
+		height: 297mm;
+		margin: 0 !important;
+		padding: 0 !important;
+		-webkit-print-color-adjust: exact;
+	}
+
+	body * {
+		visibility: hidden;
+	}
+
+	.a4-sheet,
+	.a4-sheet * {
+		visibility: visible;
+	}
+
+	.a4-sheet {
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0;
+		border: none !important;
+		box-shadow: none !important;
+		width: 210mm;
+		height: 297mm;
+		padding: 20mm; /* Use mm for consistency */
+		box-sizing: border-box;
+	}
+
+	.no-print,
+	.no-print * {
+		display: none !important;
+	}
+
+	/* Ensure logos are visible */
+	.agenda-header img {
+		visibility: visible !important;
+	}
+
+	/* Bỏ border của input khi in */
+	.form-control {
+		border: none !important;
+		box-shadow: none !important;
+		background-color: transparent !important;
+	}
+}

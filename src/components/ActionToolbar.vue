@@ -1,14 +1,19 @@
 <template>
-	<div class="toolbar-container d-flex justify-content-end align-items-center p-2 bg-light border-bottom">
-		<button class="btn btn-light me-2">
+	<div class="toolbar-container d-flex justify-content-end align-items-center p-2 bg-light border-bottom no-print">
+		<button class="btn btn-light me-2" @click="$emit('toggleBold')" :class="{ active: activeField?.isBold }">
 			<strong>B</strong>
 		</button>
-		<button class="btn btn-primary me-2">In</button>
-		<button class="btn btn-secondary">Làm mới nội dung</button>
+		<button class="btn btn-primary me-2" @click="$emit('print')">In</button>
+		<button class="btn btn-secondary" @click="$emit('reset')">Làm mới nội dung</button>
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+defineProps({
+	activeField: Object,
+});
+defineEmits(["toggleBold", "print", "reset"]);
+</script>
 
 <style scoped>
 .toolbar-container {

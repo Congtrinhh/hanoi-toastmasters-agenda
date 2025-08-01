@@ -6,4 +6,8 @@
 
 <script setup></script>
 
-<style scoped></style>
+<style scoped>
+footer.agenda-footer {
+	display: flex;
+}
+</style>
