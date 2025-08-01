@@ -9,6 +9,7 @@
 			@copy-row="copyRow"
 			@update-start-time="updateStartTime"
 			@field-focus="setActiveField"
+			@toggle-heading="toggleHeading"
 		/>
 		<AgendaFooter />
 		<div class="page-break no-print"></div>
@@ -39,6 +40,7 @@ const getInitialState = () => ({
 			program: { value: "Trò chơi khởi động", isBold: false },
 			duration: { value: 10, isBold: false },
 			assignee: { value: "TM. ", isBold: false },
+			isHeading: false,
 		},
 		{
 			id: Date.now() + 1,
@@ -46,6 +48,7 @@ const getInitialState = () => ({
 			program: { value: "Phát biểu mở đầu của chủ tịch CLB", isBold: false },
 			duration: { value: 3, isBold: false },
 			assignee: { value: "TM. Thúy Kimi", isBold: false },
+			isHeading: false,
 		},
 	],
 });
@@ -71,6 +74,7 @@ function addRow(index) {
 		program: { value: "", isBold: false },
 		duration: { value: 5, isBold: false },
 		assignee: { value: "", isBold: false },
+		isHeading: false,
 	};
 	appState.value.timelineRows.splice(index + 1, 0, newRow);
 }
@@ -117,6 +121,13 @@ function recalculateTimes() {
 }
 
 watch(appState, recalculateTimes, { deep: true });
+
+function toggleHeading(index) {
+	const row = appState.value.timelineRows[index];
+	if (row) {
+		row.isHeading = !row.isHeading;
+	}
+}
 
 function handleReset() {
 	resetState();

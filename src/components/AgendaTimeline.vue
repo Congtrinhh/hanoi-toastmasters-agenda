@@ -18,7 +18,12 @@
 			@update:list="emit('update:rows', $event)"
 		>
 			<template #item="{ element: row, index }">
-				<div class="row-container" @mouseover="hoveredRow = row.id" @mouseleave="hoveredRow = null">
+				<div
+					class="row-container"
+					:class="{ 'is-heading': row.isHeading }"
+					@mouseover="hoveredRow = row.id"
+					@mouseleave="hoveredRow = null"
+				>
 					<!-- Drag Handle -->
 					<div class="drag-handle no-print">⠿</div>
 
@@ -62,10 +67,18 @@
 
 					<!-- Action Buttons -->
 					<div class="action-buttons no-print" v-if="hoveredRow === row.id">
-						<button class="btn btn-sm btn-light" @click="emit('addRow', index)">+</button>
-						<button class="btn btn-sm btn-light mx-1" @click="emit('copyRow', index)">❐</button>
+						<button class="btn btn-sm btn-light" @click="emit('addRow', index)">+ Thêm</button>
+						<button class="btn btn-sm btn-light mx-1" @click="emit('copyRow', index)">❐ Sao chép</button>
+
+						<button
+							class="btn btn-sm btn-light mx-1"
+							title="Toggle Heading"
+							@click="emit('toggleHeading', index)"
+						>
+							Làm tiêu đề
+						</button>
 						<button class="btn btn-sm btn-light" v-if="rows.length > 1" @click="emit('deleteRow', index)">
-							xóa
+							Xóa
 						</button>
 					</div>
 				</div>
@@ -83,7 +96,15 @@ const props = defineProps({
 	rows: Array,
 });
 
-const emit = defineEmits(["update:rows", "addRow", "copyRow", "deleteRow", "updateStartTime", "fieldFocus"]);
+const emit = defineEmits([
+	"update:rows",
+	"addRow",
+	"copyRow",
+	"deleteRow",
+	"updateStartTime",
+	"fieldFocus",
+	"toggleHeading",
+]);
 
 const hoveredRow = ref(null);
 
@@ -168,6 +189,16 @@ const draggableRows = computed({
 	background: #c8ebfb;
 }
 .fw-bold {
+	font-weight: bold;
+}
+
+.is-heading {
+	background-color: #f8f9fa;
+}
+
+.is-heading .cell,
+.is-heading :deep(textarea),
+.is-heading :deep(input) {
 	font-weight: bold;
 }
 </style>
