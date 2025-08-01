@@ -4,5 +4,6 @@ import vue from "@vitejs/plugin-vue";
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [vue()],
-	base: "/hanoi-toastmasters-agenda/",
+	// base: "/hanoi-toastmasters-agenda/",
+	publicPath: process.env.NODE_ENV === "production" ? "/hanoi-toastmasters-agenda/" : "/",
 });
