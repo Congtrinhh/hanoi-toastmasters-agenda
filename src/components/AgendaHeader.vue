@@ -98,8 +98,9 @@ defineEmits(["fieldFocus"]);
 .meeting-no {
 	font-size: 1.5rem;
 	font-weight: 500;
-	width: 4rem; /* 48px / 12px */
+	width: 3rem;
 	text-align: center;
+	margin-left: 2px;
 }
 
 .table thead th {

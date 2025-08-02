@@ -5,12 +5,11 @@
 		class="form-control editable-div"
 		@input="onInput"
 		@blur="onInput"
-		v-html="modelValue"
 	></div>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 
 const props = defineProps({
 	modelValue: String,
@@ -19,6 +18,12 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const editableDiv = ref(null);
+
+onMounted(() => {
+	if (editableDiv.value) {
+		editableDiv.value.innerHTML = props.modelValue;
+	}
+});
 
 const onInput = (event) => {
 	emit("update:modelValue", event.target.innerHTML);
