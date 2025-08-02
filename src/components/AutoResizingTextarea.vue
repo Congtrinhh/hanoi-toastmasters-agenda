@@ -49,7 +49,7 @@ watch(
 	padding: 0;
 	border: none;
 	background-color: transparent;
-	min-height: 24px; /* Ensure it has some height even when empty */
+	min-height: 1.5rem; /* Ensure it has some height even when empty */
 }
 .editable-div:focus {
 	outline: none;

@@ -48,7 +48,7 @@
 								<input
 									type="number"
 									class="form-control"
-									style="width: 40px; flex-grow: 0"
+									style="width: 34px; flex-grow: 0"
 									v-model.number="row.duration.value"
 									@focus="emit('fieldFocus', { field: row.duration, isHeading: row.isHeading })"
 									:disabled="row.isHeading"
@@ -143,9 +143,17 @@ const draggableRows = computed({
 .cell {
 	padding: 0.5rem;
 	border-right: 1px solid #dee2e6;
+}
+
+.header-cell {
+	text-align: center;
+}
+
+.cell {
 	display: flex;
 	align-items: start; /* Align items to the top */
 }
+
 .header-cell:last-child,
 .cell:last-child {
 	border-right: none;
