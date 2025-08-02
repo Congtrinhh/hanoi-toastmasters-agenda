@@ -27,8 +27,10 @@ const getInitialState = () => ({
 	headerData: {
 		meetingNumber: { value: "182" },
 		generalInfo: {
-			value: `Ngày: Thứ 5, 7/8/2025 Giờ: 19:00 - 21:30
-Địa chỉ: 22 Thành Công`,
+			value: `
+				Ngày: Thứ 5, 7/8/2025<br />
+				Giờ: 19:00 - 21:30<br />
+				Địa chỉ: 22 Thành Công`,
 		},
 		wordOfTheDay: { value: "" },
 	},

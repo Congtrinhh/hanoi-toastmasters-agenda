@@ -64,15 +64,15 @@
 
 					<!-- Action Buttons -->
 					<div class="action-buttons no-print" v-if="hoveredRow === row.id">
-						<button class="btn btn-sm btn-light" @click="emit('addRow', index)">+</button>
-						<button class="btn btn-sm btn-light mx-1" @click="emit('copyRow', index)">❐</button>
+						<button class="btn btn-sm btn-light" @click="emit('addRow', index)">+ Thêm dòng</button>
+						<button class="btn btn-sm btn-light mx-1" @click="emit('copyRow', index)">❐ Sao chép</button>
 
 						<button
 							class="btn btn-sm btn-light mx-1"
 							title="Toggle Heading"
 							@click="emit('toggleHeading', index)"
 						>
-							Tiêu đề</button
+							Làm tiêu đề</button
 						><button class="btn btn-sm btn-light" v-if="rows.length > 1" @click="emit('deleteRow', index)">
 							Xóa
 						</button>
@@ -129,7 +129,7 @@ const draggableRows = computed({
 
 .timeline-header {
 	background-color: #f8f9fa;
-	border-bottom: 2px solid #dee2e6;
+	border-bottom: 1px solid #dee2e6;
 }
 
 .header-cell,
