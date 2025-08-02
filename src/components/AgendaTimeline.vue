@@ -31,6 +31,7 @@
 					<div class="timeline-cells">
 						<div class="cell">
 							<AutoResizingTextarea
+								v-if="!row.isHeading"
 								:modelValue="row.startTime"
 								@update:modelValue="emit('updateStartTime', { index, value: $event })"
 								:disabled="index !== 0"
@@ -50,6 +51,7 @@
 									style="width: 40px; flex-grow: 0"
 									v-model.number="row.duration.value"
 									@focus="emit('fieldFocus', { field: row.duration, isHeading: row.isHeading })"
+									:disabled="row.isHeading"
 								/>
 								<span class="">phút</span>
 							</div>
@@ -69,11 +71,16 @@
 
 						<button
 							class="btn btn-sm btn-light mx-1"
-							title="Toggle Heading"
+							title="Bật/tắt làm dòng tiêu đề"
 							@click="emit('toggleHeading', index)"
 						>
-							Làm tiêu đề</button
-						><button class="btn btn-sm btn-light" v-if="rows.length > 1" @click="emit('deleteRow', index)">
+							Bật/tắt tiêu đề</button
+						><button
+							class="btn btn-sm btn-light"
+							title="Xóa dòng"
+							v-if="rows.length > 1"
+							@click="emit('deleteRow', index)"
+						>
 							Xóa
 						</button>
 					</div>

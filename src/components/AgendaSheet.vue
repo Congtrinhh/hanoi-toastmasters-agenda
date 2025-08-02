@@ -111,12 +111,55 @@ function addMinutes(time, mins) {
 }
 
 function recalculateTimes() {
+	console.log("Recalculating times...");
+
+	// First, calculate durations for heading rows
+	for (let i = 0; i < appState.value.timelineRows.length; i++) {
+		const currentRow = appState.value.timelineRows[i];
+		if (currentRow.isHeading) {
+			let totalDuration = 0;
+			// Sum duration of subsequent non-heading rows until the next heading
+			for (let j = i + 1; j < appState.value.timelineRows.length; j++) {
+				const childRow = appState.value.timelineRows[j];
+				if (childRow.isHeading) {
+					break; // Stop at the next heading
+				}
+				totalDuration += childRow.duration.value || 0;
+			}
+			currentRow.duration.value = totalDuration;
+		}
+	}
+
+	// Then, calculate start times for all rows
 	for (let i = 1; i < appState.value.timelineRows.length; i++) {
-		const prevRow = appState.value.timelineRows[i - 1];
-		if (prevRow.startTime && prevRow.duration.value > 0) {
-			appState.value.timelineRows[i].startTime = addMinutes(prevRow.startTime, prevRow.duration.value);
+		const currentRow = appState.value.timelineRows[i];
+		if (currentRow.isHeading) {
+			currentRow.startTime = ""; // Clear start time for heading rows
+			continue;
+		}
+
+		// Find the previous non-heading row
+		let prevRow = null;
+		for (let j = i - 1; j >= 0; j--) {
+			if (!appState.value.timelineRows[j].isHeading) {
+				prevRow = appState.value.timelineRows[j];
+				break;
+			}
+		}
+
+		if (prevRow && prevRow.startTime && prevRow.duration.value > 0) {
+			currentRow.startTime = addMinutes(prevRow.startTime, prevRow.duration.value);
 		} else {
-			appState.value.timelineRows[i].startTime = "";
+			// If the first row is a heading, the first non-heading row should not have a start time
+			if (i === 0 || appState.value.timelineRows.findIndex((r) => !r.isHeading) === i) {
+				if (!appState.value.timelineRows[0].isHeading) {
+					// only calculate if the very first row is not a heading
+				} else {
+					currentRow.startTime = "";
+				}
+			} else {
+				currentRow.startTime = "";
+			}
 		}
 	}
 }
@@ -127,6 +170,9 @@ function toggleHeading(index) {
 	const row = appState.value.timelineRows[index];
 	if (row) {
 		row.isHeading = !row.isHeading;
+		if (row.isHeading) {
+			row.startTime = ""; // Clear start time when making it a heading
+		}
 	}
 }
 
