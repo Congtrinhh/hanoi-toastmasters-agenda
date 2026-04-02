@@ -26,11 +26,12 @@ import { usePersistence } from "../composables/usePersistence.js";
 const getInitialState = () => ({
 	headerData: {
 		meetingNumber: { value: "182" },
+		meetingName: { value: "SPEAKATHON" },
 		generalInfo: {
 			value: `
 				Ngày: Thứ 5, 7/8/2025<br />
 				Giờ: 19:00 - 21:30<br />
-				Địa chỉ: 22 Thành Công`,
+				Địa chỉ: 74 Nguyễn Văn Tuyết`,
 		},
 		wordOfTheDay: { value: "" },
 	},
