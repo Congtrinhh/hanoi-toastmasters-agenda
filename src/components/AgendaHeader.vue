@@ -20,7 +20,12 @@
 						@focus="$emit('fieldFocus', headerData.meetingNumber)"
 					/>
 				</h3>
-				<h3 class="mb-2">SPEAKATHON</h3>
+				<h3 class="mb-2"><input
+						type="text"
+						class="form-control d-inline-block meeting-name"
+						v-model="headerData.meetingName.value"
+						@focus="$emit('fieldFocus', headerData.meetingName)"
+					/></h3>
 			</div>
 			<div class="col-2">
 				<img
@@ -96,6 +101,14 @@ defineEmits(["fieldFocus"]);
 }
 
 .meeting-no {
+	font-size: 1.5rem;
+	font-weight: 500;
+	width: 3rem;
+	text-align: center;
+	margin-left: 2px;
+}
+
+	.meeting-name {
 	font-size: 1.5rem;
 	font-weight: 500;
 	width: 3rem;
